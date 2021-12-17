@@ -1,0 +1,187 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+@import "fonts/index.scss";
+$primary: #ff4655;
+$dark: #111;
+$light: #ece8e1;
+$white: #fff;
+$black: #000;
+$gray: #ccc;
+$bg-color: #faf8f5;
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #faf8f5;
+  font-size: 16px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.logo {
+  color: $primary;
+  background-color: $white;
+  border-radius: 30px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 45px;
+  }
+}
+h1 {
+  font-weight: 900;
+}
+h2 {
+  font-weight: 300;
+}
+p {
+  font-size: 12px;
+}
+
+.wellcome {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: $white;
+  border-radius: 30px;
+  padding: 30px;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    > * {
+      margin-bottom: 10px;
+    }
+  }
+  &__tip {
+    flex: 1;
+  }
+}
+
+.game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  &__boxes {
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(100px, 1fr));
+    grid-gap: 1rem;
+    .perspective{
+      perspective: 200px;
+    }
+  }
+  &__box {
+    background-color: $primary;
+    color: $white;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    transition: 0.5s ease;
+    transform: rotateY(180deg);
+    
+    &.-match {
+      transform: rotateY(360deg) !important;
+      animation: fade 0.5s ease 1s forwards;
+      background-color: $gray;
+    }
+    &.-open {
+      transform: rotateY(360deg);
+    }
+    span {
+      &.-word {
+        opacity: 0;
+        animation: defade 0.1s ease 0.2s forwards;
+      }
+      &.-question {
+        transform: rotateY(180deg);
+      }
+    }
+    cursor: pointer;
+    &:hover {
+    }
+  }
+}
+
+button,
+select,
+input {
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid $gray;
+  padding: 0 10px;
+  background-color: $white;
+  color: $black;
+  &:focus {
+    outline-color: $primary;
+  }
+}
+
+button {
+  background-color: $primary;
+  border-color: $primary;
+  color: $white;
+  font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    background-color: darken($primary, 5%);
+    border-color: darken($primary, 5%);
+  }
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>')
+    no-repeat right 10px center;
+}
+
+@media only screen and (max-width: 768px) {
+  .wellcome {
+    max-width: 100%;
+    border-radius: 0;
+    margin: 10px;
+    &__container {
+      flex-direction: column;
+    }
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes defade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
