@@ -86,7 +86,7 @@ p {
     display: grid;
     grid-template-columns: repeat(5, minmax(100px, 1fr));
     grid-gap: 1rem;
-    .perspective{
+    .perspective {
       perspective: 200px;
     }
   }
@@ -101,7 +101,7 @@ p {
     border-radius: 30px;
     transition: 0.5s ease;
     transform: rotateY(180deg);
-    
+
     &.-match {
       transform: rotateY(360deg) !important;
       animation: fade 0.5s ease 1s forwards;
